@@ -8,7 +8,7 @@ import io.cucumber.java.en.When;
 
 public class PIMPageStep extends BaseClass {
 	private static PIMPage pimpg;
-	private static String empId;
+	 static String empId;
 	@When("user is on PIM page and validate url")
 	public void user_is_on_pim_page_and_validate_url() {
 		pimpg = new PIMPage();
@@ -43,6 +43,18 @@ public class PIMPageStep extends BaseClass {
 	public void user_click_on_employee_list_button() {
 	  pimpg.clickOnEmployeeList();
 	}
+	
+	@When("user enter employee id")
+	public void user_enter_employee_id() {
+		System.out.println(empId);
+	pimpg.enterEmpId(empId);
+	}
+	@When("user click on search button")
+	public void user_click_on_search_button() {
+	   pimpg.clickOnSearch();
+	}
+
+	
 
 	
 }

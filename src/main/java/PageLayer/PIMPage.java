@@ -24,11 +24,17 @@ public class PIMPage extends BaseClass {
 	@FindBy(xpath = "//button[text()=' Save ']")
 	private WebElement save;
 
-	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[3]")
+	@FindBy(xpath = "//label[text()='Employee Id']/following::input[1]")
 	private WebElement empIdCatpured;
 
 	@FindBy(xpath = "//a[text()='Employee List']")
 	private WebElement empList;
+	
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
+	private WebElement empid;
+	
+	@FindBy(xpath="//button[text()=' Search ']")
+	private WebElement search;
 
 	public PIMPage() {
 		PageFactory.initElements(driver, this);
@@ -67,6 +73,22 @@ public class PIMPage extends BaseClass {
 			e.printStackTrace();
 		}
 		Wait.click(empList);
+	}
+	
+	public void enterEmpId(String empId)
+	{
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	Wait.sendKeys(empid, empId);	
+	}
+	
+	public void clickOnSearch()
+	{
+		Wait.click(search);
 	}
 	
 }
