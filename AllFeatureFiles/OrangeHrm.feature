@@ -4,3 +4,8 @@ Feature: Test the Orange HRM application
     Given user is on login page
     When user enter valid username and password
     Then user click on login button
+
+  Scenario: validate Home Page functionality
+    When user is on home page and validate home page title
+    And user validate home page url
+    And user validate home page logo
