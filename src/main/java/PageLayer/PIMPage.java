@@ -9,37 +9,38 @@ import UtilityLayer.Wait;
 
 public class PIMPage extends BaseClass {
 
-	
-	@FindBy(xpath="//span[text()='PIM']")
+	@FindBy(xpath = "//span[text()='PIM']")
 	private WebElement pim;
-	
-	@FindBy(xpath="//a[text()='Add Employee']")
+
+	@FindBy(xpath = "//a[text()='Add Employee']")
 	private WebElement addemp;
-	
-	@FindBy(name="firstName")
+
+	@FindBy(name = "firstName")
 	private WebElement fname;
-	
-	@FindBy(name="lastName")
+
+	@FindBy(name = "lastName")
 	private WebElement lname;
-	
-	@FindBy(xpath="//button[text()=' Save ']")
+
+	@FindBy(xpath = "//button[text()=' Save ']")
 	private WebElement save;
-	
-	
-	public PIMPage()
-	{
+
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[3]")
+	private WebElement empIdCatpured;
+
+	@FindBy(xpath = "//a[text()='Employee List']")
+	private WebElement empList;
+
+	public PIMPage() {
 		PageFactory.initElements(driver, this);
 	}
-	
-	public String verifyPimPage() throws InterruptedException
-	{
+
+	public String verifyPimPage() throws InterruptedException {
 		Wait.click(pim);
 		Thread.sleep(3000);
 		return driver.getCurrentUrl();
 	}
-	
-	public void addEmp(String Fname,String Lname) throws InterruptedException
-	{
+
+	public void addEmp(String Fname, String Lname) throws InterruptedException {
 		Wait.click(addemp);
 		Thread.sleep(3000);
 		Wait.sendKeys(fname, Fname);
@@ -47,6 +48,25 @@ public class PIMPage extends BaseClass {
 		Thread.sleep(3000);
 		Wait.click(save);
 	}
+	
+	public String captureEmployeeId() {
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Wait.getAttribute(empIdCatpured, "value");
+	}
 
+	public void clickOnEmployeeList() {
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Wait.click(empList);
+	}
 	
 }
