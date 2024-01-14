@@ -9,3 +9,7 @@ Feature: Test the Orange HRM application
     When user is on home page and validate home page title
     And user validate home page url
     And user validate home page logo
+
+  Scenario: validate PIM Page Functionality
+    When user is on PIM page and validate url
+    And user click on Add Employee and enter firstname and lastname and click on save button
